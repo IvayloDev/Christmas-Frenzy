@@ -104,6 +104,7 @@ public class SpawnPresents : MonoBehaviour {
 			ShopAnimation.SetBool("ShopBack",true);
 			ShopAnimation.SetBool("ShopTrue",false);
 			Click2Start.SetActive(false);
+			ButtonScript.ShowHighScore = false;
 
 
 			Lives.NotPressed = false;
@@ -131,8 +132,13 @@ public class SpawnPresents : MonoBehaviour {
 			IncreasingSeconds = Random.Range(0.2f,0.5f);
 			}
 		}
-		if(ScoreScript.Score > 100){
+		if(ScoreScript.Score >= 100){
+			if(ScoreScript.Score <= 200){
 			IncreasingSeconds = Random.Range(0.1f,0.5f);
+			}
+		}
+		if(ScoreScript.Score > 200){
+			IncreasingSeconds = Random.Range(0.1f,0.3f);
 		}
 			
 	}

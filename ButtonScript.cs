@@ -10,6 +10,8 @@ public class ButtonScript : MonoBehaviour {
 	public Animator ShopAnimator;
 	public GameObject musicButt, ResumeButt, TutorialScreen,XButt;
 	public AudioClip[] audioClip;
+	public GoogleAnalyticsV3 googleAnalytics;
+	
 
 
 	public void PlaySound(int clip){
@@ -23,6 +25,7 @@ public class ButtonScript : MonoBehaviour {
 		PlaySound(0);
 		MusicInt = 0;
 		MusicInt = PlayerPrefs.GetInt("MusicInt", 0);
+		ShowHighScore = false;
 	}
 
 	public void Restart(){
@@ -57,6 +60,14 @@ public class ButtonScript : MonoBehaviour {
 	public void onXClick(){
 		XButt.SetActive(false);
 		TutorialScreen.SetActive(false);
+	}
+
+	public void onLeaderBoardClick(){
+		Social.ShowLeaderboardUI();
+	}
+	
+	public void onAchievementClick(){
+		Social.ShowAchievementsUI();
 	}
 
 	public void onShopClick(){

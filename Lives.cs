@@ -17,28 +17,42 @@ public class Lives : MonoBehaviour {
 	public GameObject StartCounter;
 	public GameObject Bag;
 	public GameObject HighScoreText;
+	public static int AdCount;
+	public static bool ShowAd;
+	public GameObject LeaderBoardButt,AchievementsButt,ShareButt;
 
 	// Use this for initialization
 	void Start () {
+		AchievementsButt.SetActive(false);
+		LeaderBoardButt.SetActive(false);
+		ShareButt.SetActive(false);
+		ShowAd = false;
 		isDead = false;
 		NotPressed = true;
 		LivesCount = 2;
 		LivesText = GetComponent<Text>();
-		HighScoreText.SetActive(false);
+		//HighScoreText.SetActive(false);
 	}
 
 	void OnLost() {
+			AchievementsButt.SetActive(true);
+			LeaderBoardButt.SetActive(true);
+			ShareButt.SetActive(true);
 			isDead = true;
 			RestartAnim.SetBool("Restart",true);
-			AchievementAnim.SetBool("EndGameButtons",true);
-			LeaderBoardAnim.SetBool("EndGameButtons",true);
-			ShareAnim.SetBool("EndGameButtons",true);
 			Bag.SetActive(false);
 			PauseButton.SetActive(false);
 			HighScoreText.SetActive(true);
 			StartCounter.SetActive(false);
-		
+			AdCount++;
+			ShowAd = true;
+			AchievementAnim.SetBool("EndGameButtons",true);
+			LeaderBoardAnim.SetBool("EndGameButtons",true);
+			ShareAnim.SetBool("EndGameButtons",true);
+			ButtonScript.ShowHighScore = true;
+	
 	}
+
 
 	// Update is called once per frame
 	void Update () {
