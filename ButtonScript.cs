@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using GooglePlayGames.BasicApi;
+using GooglePlayGames;
+using UnityEngine.SocialPlatforms;
 
 public class ButtonScript : MonoBehaviour {
 
@@ -55,6 +58,8 @@ public class ButtonScript : MonoBehaviour {
 	public void onInfoClick(){
 		TutorialScreen.SetActive(true);
 		XButt.SetActive(true);
+		ShopAnimator.SetBool("ShopBack",true);
+		ShopAnimator.SetBool("ShopTrue",false);
 	}
 
 	public void onXClick(){
@@ -63,11 +68,23 @@ public class ButtonScript : MonoBehaviour {
 	}
 
 	public void onLeaderBoardClick(){
+		if(Social.localUser.authenticated ){
 		Social.ShowLeaderboardUI();
+		}else{
+			Social.localUser.Authenticate(
+				(bool success) => {
+			});
+		}
 	}
 	
 	public void onAchievementClick(){
-		Social.ShowAchievementsUI();
+		if(Social.localUser.authenticated){
+			Social.ShowAchievementsUI();
+		}else{
+			Social.localUser.Authenticate(
+				(bool success) => {
+			});
+		}
 	}
 
 	public void onShopClick(){
@@ -83,7 +100,7 @@ public class ButtonScript : MonoBehaviour {
 		intentObject.Call<AndroidJavaObject> ("setAction", intentClass.GetStatic<string> ("ACTION_SEND"));
 		intentObject.Call<AndroidJavaObject> ("setType", "text/plain");
 		intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_SUBJECT"), "Check This Out !");
-		intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TEXT"), "I Just Scored " + ScoreScript.Score + " Points in #Christmas Frenzy");
+		intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TEXT"), "I Just Scored " + ScoreScript.Score + " Points in Christmas Frenzy." +  " Download Now !  https://play.google.com/store/apps/details?id=com.IvayloDev.ChristmasFrenzy ");
 		AndroidJavaClass unity = new AndroidJavaClass ("com.unity3d.player.UnityPlayer");
 		AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject> ("currentActivity");
 		AndroidJavaObject jChooser = intentClass.CallStatic<AndroidJavaObject>("createChooser", intentObject, "Share Via");
