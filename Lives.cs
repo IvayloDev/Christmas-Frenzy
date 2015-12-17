@@ -53,47 +53,47 @@ public class Lives : MonoBehaviour {
 
 		if(Social.localUser.authenticated){
 
-			Social.ReportScore(HighScoreScript.HighScore,"CgkI8sLw9sgQEAIQAQ", (bool success) => {
+			Social.ReportScore(HighScoreScript.HighScore,"ID", (bool success) => {
 			});
 
 			
 			if(HighScoreScript.HighScore >= 20) {
-				Social.ReportProgress("CgkI8sLw9sgQEAIQAg", 100.0f, (bool success) => {
+				Social.ReportProgress("ID", 100.0f, (bool success) => {
 				});
 			}
 
 			
 			if(HighScoreScript.HighScore >= 50) {
-				Social.ReportProgress("CgkI8sLw9sgQEAIQAw", 100.0f, (bool success) => {
+				Social.ReportProgress("ID", 100.0f, (bool success) => {
 				});
 			}
 
 			
 			if(HighScoreScript.HighScore >= 100) {
-				Social.ReportProgress("CgkI8sLw9sgQEAIQBA", 100.0f, (bool success) => {
+				Social.ReportProgress("ID", 100.0f, (bool success) => {
 				});
 			}
 
 			
 			if(HighScoreScript.HighScore >= 200) {
-				Social.ReportProgress("CgkI8sLw9sgQEAIQBQ", 100.0f, (bool success) => {
+				Social.ReportProgress("ID", 100.0f, (bool success) => {
 				});
 			}
 
 			
 			if(HighScoreScript.HighScore >= 300) {
-				Social.ReportProgress("CgkI8sLw9sgQEAIQBg", 100.0f, (bool success) => {
+				Social.ReportProgress("ID", 100.0f, (bool success) => {
 				});
 			}
 
 			
 			if(HighScoreScript.HighScore >= 400) {
-				Social.ReportProgress("CgkI8sLw9sgQEAIQBw", 100.0f, (bool success) => {
+				Social.ReportProgress("ID", 100.0f, (bool success) => {
 				});
 			}
 
 			if(HighScoreScript.HighScore >= 500) {
-				Social.ReportProgress("CgkI8sLw9sgQEAIQCA", 100.0f, (bool success) => {
+				Social.ReportProgress("ID", 100.0f, (bool success) => {
 				});
 			}
 
